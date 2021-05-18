@@ -14,6 +14,13 @@ public class Lecture {
 		 * is not the case for most classes */
 
 		/* create an new instance of String using a literal */
+		String greeting= "Hello World!";
+		System.out.println("greeting is:");
+
+		String greetings2 = new String("Hello to you too!");
+		System.out.println("CTOR method: " +greetings2);
+
+
 
 		
 		System.out.println();
