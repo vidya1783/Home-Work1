@@ -10,6 +10,13 @@ public class Lecture {
 		System.out.println("####################");
 		System.out.println("       LISTS");
 		System.out.println("####################");
+		List<String>names= new ArrayList<String>();
+		names.add("Bob");
+		names.add("Mary");
+		names.add("Mary");
+		names.add("Mary");
+
+
 
 
 		System.out.println("####################");
