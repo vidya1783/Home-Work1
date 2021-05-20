@@ -33,9 +33,29 @@ public class Exercises {
 	 * animalGroupName("elephants") -> "unknown"
 	 *
 	 */
-	public String animalGroupName(String animalName) {
-		return null;
-	}
+
+	public String animalGroupName(String animalName){
+	Map<String,String> animalGroups = new HashMap<>();
+   animalName = (animalName == null)?"":animalName;
+		   animalGroups.put("Rhino","Crash");
+		   animalGroups.put("Giraffe","Tower");
+		   animalGroups.put("Elephant","Herd");
+		   animalGroups.put("Lion","Pride");
+		   animalGroups.put("Crow","Murder");
+		   animalGroups.put("Pigeon","Kit");
+		   animalGroups.put("Flamingo","Pat");
+		   animalGroups.put("Deer","Herd");
+		   animalGroups.put("Dog","Pack");
+		   animalGroups.put("Crocodile","Float");
+		   animalGroups.put("","unknown");
+		   String result = "unknown";
+		   for(String nameKey: animalGroups.keySet()) {
+		   if (nameKey.toLowerCase().equals(animalName.toLowerCase())) {
+		   result = animalGroups.get(nameKey);
+		   }
+		   }
+		   return result;
+		   }
 
 	/*
 	 * Given an String item number (a.k.a. SKU), return the discount percentage if the item is on sale.
@@ -60,7 +80,19 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(String itemNumber) {
-		return -1.0;
+		Map<String, Double> isItOnSale = new HashMap<>();
+
+		           isItOnSale.put("KITCHEN4001", 0.20);
+		           isItOnSale.put("GARAGE1070", 0.15);
+		           isItOnSale.put("LIVINGROOM", 0.10);
+		           isItOnSale.put("KITCHEN6073", 0.40);
+		           isItOnSale.put("BEDROOM3434", 0.60);
+		           isItOnSale.put("BATH0073", 0.15);
+				if(isItOnSale.containsKey(itemNumber.toUpperCase())){
+					return (isItOnSale.get(itemNumber.toUpperCase()));
+				}
+				else
+				{return 0.00;}
 	}
 
 	/*
@@ -74,8 +106,25 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
-	}
+		int peterMoney= peterPaul.get("Peter");
+		int paulMoney= peterPaul.get("Paul");
+		if(peterMoney> 0 && paulMoney <1000){
+			if(peterMoney % 2!=0){
+				peterMoney = peterMoney/2;
+				paulMoney = paulMoney + peterMoney;
+				peterMoney++;}
+			else if( peterMoney >0 && paulMoney< 1000){
+				peterMoney= peterMoney/2;
+				paulMoney = peterMoney + paulMoney;}
+			else { return peterPaul;}
+
+			}
+		peterPaul.put("Peter", peterMoney);
+		peterPaul.put("Paul", paulMoney);
+		return peterPaul;
+		}
+
+
 
 	/*
 	 * Modify and return the given Map as follows: if "Peter" has $50 or more, AND "Paul" has $100 or more,

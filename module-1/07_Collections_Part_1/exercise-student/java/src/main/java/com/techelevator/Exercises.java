@@ -1,7 +1,8 @@
 package com.techelevator;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Exercises {
 
@@ -16,8 +17,18 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
-	}
+		List<String> array2List= new ArrayList<String>();
+		{ for (String fruit:stringArray){
+			array2List.add(fruit);
+		}
+				return array2List;
+
+
+		}}
+
+
+
+
 
 	/*
 	 Given a list of Strings, return an array containing the same Strings in the same order
@@ -26,7 +37,8 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		String[]list2Array=stringList.toArray(new String[stringList.size()]);
+		{return list2Array;}
 	}
 
 	/*
@@ -37,8 +49,16 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
-	}
+		List<String> no4LetterWords=new ArrayList<String>();
+		{ for (String words:stringArray){
+			if(words.length() !=4)
+
+			no4LetterWords.add(words);
+		}
+
+
+		return no4LetterWords;
+	}}
 
 	/*
 	 Given an array of ints, divide each int by 2, and return an ArrayList of Doubles.
@@ -47,8 +67,11 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
-	}
+		List<Double> dividedDoubles=new ArrayList<Double>();
+		{for(Integer numbers:intArray)
+		{dividedDoubles.add(numbers/2.0);}
+		return dividedDoubles;
+	}}
 
 	/*
 	 Given a List of Integers, return the largest value.
@@ -57,7 +80,8 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+
+		return Collections.max(integerList);
 	}
 
 	/*
@@ -67,8 +91,14 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
-	}
+		List<Integer> onlyOdds= new ArrayList<Integer>();
+		{for(Integer number:integerArray){
+			if(number%2==1){
+				onlyOdds.add(number);
+			}
+		}
+		return onlyOdds;
+	}}
 
 	/*
 	 Given a List of Integers, and an int value, return true if the int value appears two or more times in
@@ -78,8 +108,14 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
-	}
+		int count=0;
+		for(Integer findTwice:integerList){
+			if(intToFind==findTwice){count+=1;}
+			if (count==2){return true;}
+
+		}return false;}
+
+
 
 	/*
 	 Given an array of Integers, return a List that contains the same Integers (as Strings). Except any multiple of 3
@@ -94,8 +130,21 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> fizz = new ArrayList<String>();
+		for(Integer checkFizz : integerArray){
+			if(checkFizz % 3 == 0 && checkFizz % 5 == 0){
+				fizz.add("FizzBuzz");
+			} else if (checkFizz % 3 == 0){
+				fizz.add("Fizz");
+			}else if(checkFizz % 5 == 0){
+				fizz.add("Buzz");
+			}else{ fizz.add(checkFizz.toString());}
+		}
+		return fizz;
 	}
+
+
+
 
 	/*
 	 Given two lists of Integers, interleave them beginning with the first element in the first list followed
@@ -105,7 +154,21 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> listThree=new ArrayList<>();
+		int oneIndex=0;
+		int twoIndex=0;
+		while(oneIndex<listOne.size()&&twoIndex<listTwo.size()){
+			listThree.add(listOne.get(oneIndex));
+			listThree.add(listTwo.get(twoIndex));
+			oneIndex++;
+			twoIndex++;}
+		while(oneIndex<listOne.size()){
+			listThree.add(listOne.get(oneIndex));
+			oneIndex++; }
+		while(twoIndex<listTwo.size()){
+			listThree.add(listTwo.get(twoIndex));
+			twoIndex++; }
+		return listThree;
 	}
 
 }
