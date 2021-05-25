@@ -1,15 +1,24 @@
 package com.techelevator;
 
-public class Application {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+public class Application {
+    private List<Department> departments = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
+    private Map<String,Project> projects= new HashMap<>();
+
+
+  
     /**
      * The main entry point in the application
      * @param args
      */
     public static void main(String[] args) {
         Application app = new Application();
-        app.run();
-    }
+        app.run(); }
 
     private void run() {
         // create some departments
@@ -17,6 +26,7 @@ public class Application {
 
         // print each department by name
         printDepartments();
+
 
         // create employees
         createEmployees();
@@ -35,10 +45,16 @@ public class Application {
         printProjectsReport();
     }
 
+    private void departments() {
+    }
+
     /**
      * Create departments and add them to the collection of departments
      */
     private void createDepartments() {
+        departments.add(new Department(1, "Marketing"));
+        departments.add(new Department(2, "Sales"));
+        departments.add(new Department(3, "Engineering"));
     }
 
     /**
@@ -46,6 +62,9 @@ public class Application {
      */
     private void printDepartments() {
         System.out.println("------------- DEPARTMENTS ------------------------------");
+        for(Department department :departments){
+            System.out.println(department.getName());
+        }
 
     }
 
@@ -53,14 +72,27 @@ public class Application {
      * Create employees and add them to the collection of employees
      */
     private void createEmployees() {
-
+        Employee deanJohnson = new Employee();
+        deanJohnson.setEmployeeId(1);
+        deanJohnson.setFirstName("Dean");
+        deanJohnson.setLastName("Johnson");
+        deanJohnson.setEmail("djohnson@teams.com");
+        deanJohnson.setDepartment(departments.get(2));
+        deanJohnson.setSalary(Employee.STARTING_SALARY);
+        deanJohnson.setHireDate("08/21/2020");
+        employees.add(deanJohnson);
+        employees.add(new Employee(2, "Angie", "Smith", "asmith@teams.com", departments.get(2), "08/21/2020"));
+        employees.get(1).raiseSalary(10.00);
+        employees.add(new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", departments.get(0), "08/21/2020"));
     }
-
     /**
      * Print out each employee in the collection.
      */
     private void printEmployees() {
         System.out.println("\n------------- EMPLOYEES ------------------------------");
+        for (Employee person : employees) {
+            System.out.println(person.getFullName() + " (" + person.getSalary() + ") " + person.getDepartment().getName());
+        }
 
     }
 
@@ -68,22 +100,45 @@ public class Application {
      * Create the 'TEams' project.
      */
     private void createTeamsProject() {
-
+        Project teamsProject = new Project ("TEams", "Project Management Software", "10/10/2020", "11/10/2020");
+        List<Employee> engineeringTeam = new ArrayList<Employee>();
+        for (Employee entry : employees) {
+            if (entry.getDepartment().equals(departments.get(2))) {
+                engineeringTeam.add(entry);
+            }
+        }
+        teamsProject.setTeamMembers(engineeringTeam);
+        projects.put("TEams", teamsProject);
     }
-
     /**
      * Create the 'Marketing Landing Page' project.
      */
     private void createLandingPageProject() {
-
+        Project marketingProject = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", "10/10/2020", "11/10/2020");
+        List<Employee> marketingTeam = new ArrayList<Employee>();
+        for (Employee entry : employees) {
+            if (entry.getDepartment().equals(departments.get(0))) {
+                marketingTeam.add(entry);
+            }
+        }
+        marketingProject.setTeamMembers(marketingTeam);
+        projects.put("Marketing Landing Page", marketingProject);
     }
+
+
+
 
     /**
      * Print out each project in the collection.
      */
     private void printProjectsReport() {
-        System.out.println("\n------------- PROJECTS ------------------------------");
+
+            System.out.println("\n------------- PROJECTS ------------------------------");
+            for (Map.Entry<String, Project> entry: projects.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue().getTeamMembers().size());
+            }
+        }
 
     }
 
-}
+
