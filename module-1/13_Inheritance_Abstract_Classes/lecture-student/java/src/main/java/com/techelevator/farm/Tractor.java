@@ -6,7 +6,7 @@ public class Tractor implements Singable {
     private String sound;
 
     public Tractor() {
-        name = "Tractor";
+        name = "Big Green";
         sound = "vroom!";
     }
 
