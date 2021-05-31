@@ -11,7 +11,7 @@ public class AnimalGroupName {
         animals.put("rhino", "Crash");
         animals.put("giraffe", "Tower");
         animals.put("elephant", "Herd");
-        animals.put("lion", "Herd");
+        animals.put("lion", "Pride");
         animals.put("crow", "Murder");
         animals.put("pigeon", "Kit");
         animals.put("flamingo", "Pat");
@@ -59,5 +59,6 @@ public class AnimalGroupName {
         // this is an easier way of doing what we did above
         //return animals.getOrDefault(animalName.toLowerCase(),"unknown");
     }
+
 
 }

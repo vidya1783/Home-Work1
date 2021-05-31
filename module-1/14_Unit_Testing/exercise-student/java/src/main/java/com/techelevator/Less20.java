@@ -14,6 +14,8 @@ public class Less20 {
         boolean twoLessThanMultipleOf20 = n % 20 == 18;
 
         return oneLessThanMultipleOf20 || twoLessThanMultipleOf20;
+
     }
+
 
 }

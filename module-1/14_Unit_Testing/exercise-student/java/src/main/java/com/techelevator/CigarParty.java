@@ -12,6 +12,7 @@ public class CigarParty {
      haveParty(70, true) → true
      */
     public boolean haveParty(int cigars, boolean isWeekend) {
+
         int minimumCigarCount = 40;
         int maximumCigarCount = 60;
 
@@ -21,5 +22,10 @@ public class CigarParty {
 
         return successful;
     }
+    /*public boolean cigarParty(int cigars, boolean isWeekend){
+			if ((cigars >= 40 && cigars <=60) && (isWeekend == false)){return true;}
+			if ((cigars >=40) && (isWeekend == true)){return true;}
+
+				return false;*/
 
 }

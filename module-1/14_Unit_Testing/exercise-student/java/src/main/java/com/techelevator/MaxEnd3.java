@@ -9,7 +9,7 @@ public class MaxEnd3 {
      MakeArray([11, 5, 9]) → [11, 11, 11]
      MakeArray([2, 11, 3]) → [3, 3, 3]
      */
-    public int[] makeArray(int[] nums) {
+    public int[] makeArray(int[] nums){
         int largerNum = (nums[0] > nums[nums.length - 1]) ? nums[0] : nums[nums.length - 1];
 
         for (int i = 0; i < nums.length; i++) {
