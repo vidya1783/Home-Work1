@@ -45,9 +45,6 @@ public class Pet{
         String result = "";
         for(String vax : vaccinations){ result += vax + "\t";}
 
-
-
-        //final code - refactor 2
         return result.trim().replaceAll( "\t", ", ");
     }
 
