@@ -33,7 +33,7 @@ public class Lecture {
 		 * ***************************/
 
 		System.out.println();
-		if (f.exists()) { // returns true if a file or directory exists at the file system location, otherwise returns false
+		if (f.exists()){//returns true if a file or directory exists at the file system location, otherwise returns false
 			System.out.println("name: " + f.getName());
 			System.out.println("absolutePath: " + f.getAbsolutePath());
 			if (f.isDirectory()) {
@@ -99,7 +99,7 @@ public class Lecture {
 
 		try (PrintWriter writer = new PrintWriter(newFile)) {
 			writer.println(message);
-		} // When we exit the try block, this cause the file to be closed and an automatic flush of the buffer to trigger
+		}// When we exit the try block, this cause the file to be closed and an automatic flush of the buffer to trigger
 
 		System.out.println();
 		System.out.println("name: " + newFile.getName());
