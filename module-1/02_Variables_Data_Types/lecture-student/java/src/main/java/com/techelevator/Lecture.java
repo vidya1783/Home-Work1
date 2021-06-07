@@ -23,8 +23,8 @@ public class Lecture {
 			Set it to 0.5.
 		*/
 
-		double half
-		half = 0.5
+		double half;
+		half = 0.5;
 
 		//System.out.println(half);
 
