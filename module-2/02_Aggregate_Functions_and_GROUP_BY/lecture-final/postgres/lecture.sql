@@ -72,7 +72,7 @@ ORDER BY park_name;
 --   the same results as using the region_and_state concatenated string alias.
 SELECT (census_region || ': ' || state_name) AS region_and_state
 FROM state
-WHERE census_region ILIKE '%west'
+WHERE census_region LIKE '%west'
 ORDER BY region_and_state;
 -- ORDER BY census_region, state_name; -- Alternative producing the same results
 
