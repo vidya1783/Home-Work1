@@ -2,20 +2,13 @@
 -- (5 rows, expected lengths around 180 - 200)
 
 SELECT
-       title, max(length_minutes)AS length_time, release_date
-FROM 
-     movie
-     
-JOIN movie_genre ON movie.movie_id = movie_genre.movie_id
-JOIN genre ON movie_genre.genre_id = genre.genre_id  
- 
-WHERE 
-     genre_name = 'Action'
-     
-GROUP BY
-     title, release_date;
-     
+        title, length_minutes, release_date
+FROM
+        movie m
+        JOIN movie_genre mg ON m.movie_id = mg.movie_id
+        JOIN genre g ON mg.genre_id = g.genre_id
+WHERE
+        genre_name = 'Action'
 ORDER BY
-       length_time DESC,
-       release_date DESC;
- 
+        length_minutes DESC, release_date DESC
+LIMIT 5;

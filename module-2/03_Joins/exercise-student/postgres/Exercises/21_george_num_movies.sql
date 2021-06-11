@@ -2,16 +2,14 @@
 -- Name the count column 'num_of_movies'
 
 SELECT
-    person_name, COUNT(movie_id) AS number_of_movies
-
-FROM person p
-
-LEFT OUTER JOIN movie_actor ma ON
-       p.person_id = ma.actor_id
-
+        COUNT(m.movie_id) AS num_of_movies, p.person_name
+FROM
+        movie m
+        RIGHT JOIN movie_actor ma ON m.movie_id = ma.movie_id
+        RIGHT JOIN person p ON ma.actor_id = p.person_id
 WHERE
-      person_name LIKE 'George %'
+       p.person_name LIKE 'George %'
 GROUP BY
-      person_id, person_name
+        p.person_id
 ORDER BY
-      person_name;
+        p.person_name;

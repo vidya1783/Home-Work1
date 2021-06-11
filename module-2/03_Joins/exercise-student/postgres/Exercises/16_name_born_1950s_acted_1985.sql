@@ -1,12 +1,11 @@
 -- 16. The names and birthdays of actors born in the 1950s who acted in movies that were released in 1985 (20 rows)
 
 SELECT
-      person_name, birthday
+       DISTINCT person_name, birthday
 FROM
-     person
-
-JOIN movie ON person.person_id = movie.director_id
-
+        person p
+        JOIN movie_actor ma ON p.person_id = ma.actor_id
+        JOIN movie m ON ma.movie_id = m.movie_id
 WHERE
-    ( birthday >= '1/1/1950' AND birthday <='12/31/1950') AND
-    (release_date >='1/1/1985' AND release_date <= '12/31/1985' ) ;
+        (birthday BETWEEN '1950-01-01'AND '1959-12-31') AND
+        (release_date BETWEEN '1985-01-01' AND '1985-12-31');
