@@ -10,11 +10,19 @@
   ------------------------------
 */
 
+INSERT INTO park(name, location, establish_date, area, visitors, description)
+VALUES ('Ohiopyle State Park', 'Pennsylvania', '1965-01-01', 19052, 1000000, 'Ohiopyle State Park is a Pennsylvania state park on 19,052 acres in Dunbar, Henry Clay and Stewart Townships, Fayette County, Pennsylvania in the United States. The focal point of the park is the more than 14 miles of the Youghiogheny River Gorge that passes through the park.');
+
 
 /*
   STEP TWO: You just found out that there was an error with the park data. Please update the park visitors to 1.5 million anually.
 
 */
+
+UPDATE park
+SET visitors = 1500000
+WHERE visitors =  1000000;
+
 
 
 /*
@@ -27,6 +35,9 @@
   daily_fee: 95.00
   ------------------------------------------------------------
 */
+
+INSERT INTO campground(park_id, name, open_from_mm, open_to_mm, daily_fee)
+VALUES(4, 'Youghiogheny', 01, 12, '$95.00');
 
 
 /*
@@ -41,6 +52,13 @@
 
 */
 
+INSERT INTO site(campground_id, site_number)
+VALUES (8, 623);
+INSERT INTO site(campground_id, site_number)
+VALUES (8, 624);
+INSERT INTO site(campground_id, site_number)
+VALUES (8, 625);
+
 
 /*
  STEP FIVE: Insert 3 reservations, 1 for each site with the following data:
@@ -52,15 +70,44 @@
 
 */
 
+INSERT INTO reservation(site_id, name, from_date, to_date)
+VALUES(623, 'Wayne Family', '6/23/2021', '7/3/2021');
+INSERT INTO reservation(site_id, name, from_date, to_date)
+VALUES(624, 'Parker Family', '6/24/2021', '7/3/2021');
+INSERT INTO reservation(site_id, name, from_date, to_date)
+VALUES(623, 'Kent Family', '6/25/2021', '7/3/2021');
+
 
 /*
  STEP SIX: The Wayne Family called and asked if they could change their reservation to today. Update the from_date to today and the to_date to a week from today.
 
  */
 
+ UPDATE reservation
+ SET from_date = '6/13/2021',
+       to_date = '6/20/2021'
+ WHERE from_date = '6/23/2021' AND
+       to_date ='7/3/2021';
+
 
 /*
  STEP SEVEN: The Kent family called and they would like to cancel their reservation. Delete the reservation for Kent Family.
 
 */
+
+DELETE FROM reservation
+WHERE name = 'Kent family';
+
+DELETE FROM reservation
+WHERE site_id = 623;
+
+
+DELETE FROM site
+WHERE site_id = 623;
+
+
+
+
+
+
 
