@@ -18,11 +18,25 @@ public class JdbcParkDao implements ParkDao {
 
     @Override
     public Park getPark(long parkId) {
-        return new Park();
+        Park retrievedPark = null;
+        String sqlGetPark = "SELECT park_id, park_name, date_established,area, has_camping " +
+                "FROM park WHERE park_id = ?";
+        SqlRowSet foundParks = jdbcTemplate.queryForRowSet(sqlGetPark, parkId);
+        if(foundParks.next())
+        {
+            retrievedPark = mapRowToPark(foundParks);
+        }
+        return retrievedPark;
     }
 
     @Override
     public List<Park> getParksByState(String stateAbbreviation) {
+        List<Park> stateParks = new ArrayList<>();
+        String sql = "SELECT p.park_id, park_name, date_established, area, has_camping " +
+                "FROM park P" +
+                "INNER JOIN park_state ps ON p.park_id = ps.park_id"+
+                "WHERE ps.state_abbreviation = ?;";
+        SqlRowSet stateParkResults = jdbcTemplate.queryForObject ();
         return new ArrayList<Park>();
     }
 
@@ -52,6 +66,13 @@ public class JdbcParkDao implements ParkDao {
     }
 
     private Park mapRowToPark(SqlRowSet rowSet) {
-        return new Park();
+        Park newPark = new Park();
+        newPark.setParkId(rowSet.getLong("park_id"));
+        newPark.setParkName(rowSet.getString("park_name"));
+        newPark.setDateEstablished(rowSet.getDate("date_established").toLocalDate());
+        newPark.setArea(rowSet.getDouble("area"));
+        newPark.setHasCamping(rowSet.getBoolean("has_camping"));
+
+        return newPark;
     }
 }
