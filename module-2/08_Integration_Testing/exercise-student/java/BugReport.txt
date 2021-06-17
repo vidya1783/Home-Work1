@@ -1,43 +1,48 @@
 Bug 1
 -----
 Test that demonstrates problem:
-
+    getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee().
 Expected output:
-
+   getTimesheetsByEmployeeId(1L), should return 2 timesheets.
 Actual output:
-
+   getTimesheetsByEmployeeId(1L), was returning 1 timesheet.
 How did you fix this bug?
+   Replaced if with while.
 
 
 Bug 2
 -----
 Test that demonstrates problem:
-
+    getTimesheetsByProjectId_returns_list_of_all_timesheets_for_project.
 Expected output:
-
+    getTimesheetsByProjectId(1L), should return 3 timesheets.
 Actual output:
-
+    getTimesheetsByProjectId(1L), was returning 2 timesheets.
 How did you fix this bug?
+    Replaced employee_id with project_id in the where clause.
 
 
 Bug 3
 -----
 Test that demonstrates problem:
-
+   updated_timesheet_has_expected_values_when_retrieved.
 Expected output:
-
+   Timesheet(1L), should retrieve updated timesheet.
 Actual output:
-
+   Timesheet(1L), was not returning updated timesheet.
 How did you fix this bug?
+   Removed employee_id = ?, project_id = ? from SET command and
+   removed updatedTimesheet.getEmployeeId(), updatedTimesheet.getProjectId() from jdbc template.
 
 
 Bug 4
 -----
 Test that demonstrates problem:
-
+    getBillableHours_returns_correct_total().
 Expected output:
-
+    Billable hours for Employee(2L) and Project(2L) should be 0.0
 Actual output:
-
+    Returned 2.0
 How did you fix this bug?
-
+    I added an additional WHERE clause to the getBillableHours(Long employeeId, Long projectId)
+    method so that it only returned the hours for items where billable hours are marked as true.
