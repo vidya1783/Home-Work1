@@ -3,8 +3,14 @@ package com.techelevator.auction;
 import com.techelevator.model.Auction;
 import com.techelevator.services.AuctionService;
 import com.techelevator.services.ConsoleService;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Scanner;
 
 public class App {
+    public static final String API_URL = "http://localhost:3000/auctions";
+    public static RestTemplate restTemplate = new RestTemplate();
+    private static Scanner scanner;
 
     public static void main(String[] args) {
 
@@ -18,6 +24,7 @@ public class App {
             menuSelection = consoleService.printMainMenu();
             if (menuSelection == 1) {
             	Auction[] auctions = auctionService.listAllAuctions();
+
             	if (auctions != null) {
                     consoleService.printAuctions(auctions);
             	}
