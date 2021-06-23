@@ -64,19 +64,58 @@ public class AuctionService {
         return auctions;
     }
 
-    public Auction add(String auctionString) {
-        // place code here
-        return null;
+
+    public Auction add(String newAuctionString) {
+        Auction auction = makeAuction(newAuctionString);
+        if(auction == null) {
+            return null;
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Auction> entity = new HttpEntity<>(auction, headers);
+
+        try {
+            auction = restTemplate.postForObject(API_URL ,entity, Auction.class);
+        } catch (RestClientResponseException ex) {
+            return null;
+        } catch (ResourceAccessException ex) {
+            return null;
+        }
+        return auction;
     }
 
-    public Auction update(String auctionString) {
-        // place code here
-        return null;
-    }
 
-    public boolean delete(int id) throws RestClientResponseException, ResourceAccessException {
-        // place code here
-        return false;
+    public Auction update(String auctionString){
+
+        Auction auction = makeAuction(auctionString);
+            if (auction == null) {
+                return null;
+            }
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<Auction> entity = new HttpEntity<>(auction, headers);
+
+            try {
+                restTemplate.put(API_URL +"/"+auction.getId(), entity);
+            } catch (RestClientResponseException ex) {
+                return null;
+            } catch (ResourceAccessException ex) {
+                return null;
+            }
+            return auction;
+        }
+
+        public boolean delete(int id) throws RestClientResponseException, ResourceAccessException {
+        try {
+            restTemplate.delete(API_URL + "/" + id);
+        } catch (RestClientResponseException ex) {
+            return false;
+        } catch (ResourceAccessException ex) {
+            return false;
+        }
+        return true;
     }
 
     private HttpEntity<Auction> makeEntity(Auction auction) {
