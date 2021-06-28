@@ -60,5 +60,5 @@ public class AuctionController {
         dao.delete(id);
     }
 
+    }
 
-}
