@@ -17,7 +17,7 @@ public class WordSearch {
 		while (searchFile.isFile() == false || searchFile.exists() == false) {
 			System.out.println("What is the fully qualified name of the file that should be searched? ");
 			filePath = userInput.nextLine();
-			// Create File reference to path
+			// Create File reference to path,
 			searchFile = new File(filePath);
 		}
 		// Prompt User for search word
@@ -30,6 +30,7 @@ public class WordSearch {
 		String searchResults = "";
 		if (caseSensitive.equals("N")) {
 			try (Scanner fileScanner = new Scanner(searchFile)) {
+				
 				Integer lineCounter = 0;
 				while (fileScanner.hasNextLine()) {
 					lineCounter++;
