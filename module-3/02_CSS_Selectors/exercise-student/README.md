@@ -17,7 +17,7 @@ Here are some design decisions to be aware of:
 * Only the content on the right scrolls if the page is longer than the viewport.
 * The colors used are:
     - Blue: #00ADEE
-    - Blue Border: rgba(0, 173, 238, 0.4)
+    - , Blue Border: rgba(0173, 238, 0.4)
     - Green: #8CC36F
     - Green Border: rgba(170, 239, 135, 0.8)
 
