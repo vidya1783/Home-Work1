@@ -16,3 +16,10 @@ body {
   color: #fff;
   border: solid 1px #777;
 }
+.container,
+.box{
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+
+}

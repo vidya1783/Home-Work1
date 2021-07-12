@@ -27,6 +27,7 @@ body {
   background: url(../img/andre-furtado-JtV6zyOZSrA-unsplash.jpg) left / cover
     no-repeat;
   /* add style here */
+ 
 }
 ```
 

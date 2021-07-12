@@ -43,3 +43,14 @@ li a:hover {
 .my-account img {
   width: 32px;
 }
+
+header,
+nav,
+ul,
+li,
+.spacer{
+  display: flex;
+}
+.spacer{
+  flex-basis: 100%;
+}
