@@ -20,6 +20,7 @@
  * @returns {boolean} true if they are admitted
  */
 
+
 /**
  * Write a function called useParameterToFilterArray that takes an anonymous
  * function and uses that in the `unfilteredArray` filter function. Return the result.
@@ -27,7 +28,6 @@
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
  */
-let unfilteredArray = [1, 2, 3, 4, 5, 6];
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -41,6 +41,7 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @param {string} [second=''] the second string of digits to concatenate
  * @returns {number} the resultant number
  */
+
 
 /**
  * Write a function called addAll that takes an unknown number of parameters
