@@ -161,10 +161,10 @@ function sumAllNumbersAddToBase(numbersToSum) {
  *   multiples of 3
  */
 function allDivisibleByThree(numbersToFilter) {
-
+  let unfilteredArray = [1, 2, 3, 4, 5, 6];
   return numbersToFilter.filter( 
     (number) => {
-      return number % 3 === 0;
+      return number;
     }
   );
 
