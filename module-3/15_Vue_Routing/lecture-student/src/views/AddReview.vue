@@ -1,0 +1,13 @@
+<template>
+<div>
+    <h1> Add A New Review</h1>
+    <add-review>
+        </div>
+</template>
+<script>
+import AddReview from '../components/AddReview.vue'
+
+export default {
+    
+}
+</script>

@@ -22,13 +22,17 @@ export default {
     },
     methods: {
         saveBook() {
+           
             this.$store.commit('SAVE_BOOK', this.book);
             this.book = {
                 title: '',
                 author: '',
                 read: false,
                 isbn: ''
+                
             };
+             this.$router.push({ path: "/myBooks" });
+
         }
     }
 }
