@@ -67,8 +67,29 @@ export default {
         });
     },
     deleteBoard() {
-      
-    }
+      if(
+        confirm("Are you sure you want to delete this board and all assosiated cards?This action can't be undone.")
+      ){
+        boardService.deleteBoard(this.boardID)
+        .then(response =>{
+           if (response.status === 200) {
+              alert("Card successfully deleted");
+              this.$store.commit("DELETE_BOARD", this.boardID);
+              this.$router.push('/');}
+        })
+        .catch(error =>{
+          if(error.response){
+            this.errorMsg = "Error deleting the board."
+          }else if(error.request){
+            this.errorMsg = "Error deleting the board."
+          }
+          else{
+            this.errorMsg = "Error deleting the board."
+          }
+
+        })
+      }
+      }
   },
   created() {
     this.boardId = this.$route.params.id;

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Board from '../views/Board.vue'
-import Card from '../views/Card.vue'
+import Messages from '../views/Messages.vue';
+
 
 Vue.use(VueRouter)
 
@@ -13,14 +13,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/board/:id',
-    name: 'Board',
-    component: Board
-  },
-  {
-    path: '/board/:boardID/card/:cardID',
-    name: 'Card',
-    component: Card
+    path: '/topics/:id',
+    name: 'Messages',
+    component: Messages
   }
 ]
 

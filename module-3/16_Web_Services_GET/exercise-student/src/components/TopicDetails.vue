@@ -1,7 +1,10 @@
 <template>
   <div class="topic-details">
     <h1>{{ topic.title }}</h1>
-    <div v-for="message in topic.messages" v-bind:key="message.id" class="topic-message bubble">
+    <div class="topic-message bubble" 
+      v-for="message in topic.messages" 
+      v-bind:key="message.id" 
+      >
       <h3 class="message-title">{{ message.title }}</h3>
       <p class="message-body">
         {{ message.messageText }}
@@ -9,8 +12,8 @@
     </div>
   </div>
 </template>
-
 <script>
+import topicService from '../services/TopicService';
 export default {
   name: 'topic-details',
   props: {
@@ -24,10 +27,18 @@ export default {
         messages: []
       },
     }
-  }
+  },
+   created() {
+     topicService
+     .getDetails(this.$route.params.id)
+     .then(
+       response => {
+         this.topic = response.data;
+       }
+     ); 
+   }
 }
 </script>
-
 <style>
 /** page structure **/
 .topic-details {
