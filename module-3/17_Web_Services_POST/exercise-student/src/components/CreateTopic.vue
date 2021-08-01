@@ -9,10 +9,8 @@
     </div>
   </form>
 </template>
-
 <script>
 import topicService from "../services/TopicService";
-
 export default {
   name: "create-topic",
   data() {
@@ -24,7 +22,20 @@ export default {
     };
   },
   methods: {
-    saveTopic() {}
+    saveTopic() {
+      const current = this.$store.state.activeTopic;
+  const topic = {
+    id: current.id,
+    name: current.name,
+    content: this.content,
+    lastOpened: current.lastOpened
+  };
+  topicService.create( this.topic).then(response => {
+    if (response.status === 201) {
+      this.$router.push("/");
+    }
+  });
+    }
   }
 };
 </script>

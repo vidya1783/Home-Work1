@@ -1,4 +1,4 @@
-<template>
+ <template>
   <form v-on:submit.prevent>
     <div class="field">
       <label for="title">Title</label>
@@ -9,10 +9,8 @@
     </div>
   </form>
 </template>
-
 <script>
 import topicService from "../services/TopicService";
-
 export default {
   name: "update-topic",
   props: ["topicID"],
@@ -23,9 +21,19 @@ export default {
   },
   methods: {
     updateTopic() {
-      const topic = { id: this.topicID, title: this.title };
-      // call topic service update method
+      //original: const topic = { id: this.topicID, title: this.title };
+      // call topic service update method lines 28-40
+  const current  = this.$store.state.activeTopic;
+    const topic ={
+    id: this.topicID,
+    title:this.title
+    };
+  topicService.update(topic.id, topic).then(response => {
+    if (response.status === 200) {
+      this.$router.push("/");
     }
+  });
+}
   },
   created() {
     topicService
@@ -42,6 +50,5 @@ export default {
   }
 };
 </script>
-
 <style>
 </style>

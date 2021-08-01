@@ -21,19 +21,25 @@
     </div>
   </div>
 </template>
-
 <script>
 import topicService from "@/services/TopicService.js";
 import messageService from "@/services/MessageService.js";
-
 export default {
   name: "topic-details",
   props: {
     topicId: Number
   },
   methods: {
-    deleteMessage(id) {}
-  },
+    deleteMessage(id) {
+    messageService
+     .delete(id) 
+    .then(response => {
+      if (response.status === 200) {
+         this.$store.commit("DELETE_MESSAGE", id);
+       }
+  })
+    }
+    },
   created() {
     topicService
       .get(this.topicId)
@@ -44,11 +50,10 @@ export default {
         if (error.response.status == 404) {
           this.$router.push("/not-found");
         }
-      });
+      })
   }
-};
+} 
 </script>
-
 <style>
 /** page structure **/
 .topic-details {

@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="topic-list">
     <table>
       <thead>
@@ -26,10 +26,8 @@
     </table>
   </div>
 </template>
-
 <script>
 import topicService from "@/services/TopicService.js";
-
 export default {
   name: "topic-list",
   methods: {
@@ -38,14 +36,21 @@ export default {
         this.$store.commit("SET_TOPICS", response.data);
       });
     },
-    deleteTopic(id) {}
+    deleteTopic(id) {
+      topicService
+    .delete(id)
+    .then(response => {
+      if (response.status === 200) {
+        this.getTopics();
+      }
+    });
+    }
   },
   created() {
     this.getTopics();
   }
 };
 </script>
-
 <style>
 .topic-list {
   margin: 0 auto;

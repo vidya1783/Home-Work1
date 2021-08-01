@@ -1,3 +1,4 @@
+
 # Exercises for Web API (POST)
 
 In this exercise, you'll continue working with the application that displays topics and messages in those topics. The only major change to the application is it was refactored to use Vuex to manage state. 

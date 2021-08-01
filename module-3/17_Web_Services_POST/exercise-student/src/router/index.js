@@ -7,9 +7,7 @@ import AddTopic from '@/views/AddTopic.vue';
 import EditTopic from '@/views/EditTopic.vue';
 import NotFound from '@/views/NotFound.vue';
 import EditMessage from '@/views/EditMessage';
-
 Vue.use(VueRouter);
-
 const routes = [
   {
     path: "/not-found",
@@ -47,11 +45,9 @@ const routes = [
     component: EditMessage
   },
 ];
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 });
-
 export default router;
